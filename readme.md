@@ -24,3 +24,40 @@ O projeto utiliza o interpretador Python 3 e baseia-se nas seguintes dependênci
     ```bash
     pip install yt-dlp
     ```
+3. Faça o download dos binários estáticos do **FFmpeg** (arquivos `ffmpeg.exe` e `ffprobe.exe`) e posicione-os na raiz do diretório do projeto.
+
+Para executar a aplicação em modo de desenvolvimento, utilize o comando:
+
+```bash
+python downloader.py
+```
+
+## Distribuição e Empacotamento
+
+Para gerar o executável autônomo para o usuário final, utiliza-se o `pyinstaller`.
+
+1. Instale o empacotador:
+
+```bash
+pip install pyinstaller
+```
+
+2. Execute o comando de compilação:
+
+```bash
+pyinstaller --onefile --noconsole --name="Baixador_de_Videos" downloader.py
+```
+
+3. Após a compilação, mova o arquivo `Baixador_de_Videos.exe` gerado na pasta `dist` para o diretório final de distribuição.
+4. Inclua obrigatoriamente os arquivos `ffmpeg.exe` e `ffprobe.exe` no mesmo diretório do executável final para garantir o funcionamento correto dos downloads multiplataforma.
+
+## Estrutura de Diretórios para Distribuição
+
+```text
+📁 Diretorio_Final/
+├── 📄 Baixador_de_Videos.exe
+├── 📄 ffmpeg.exe
+└── 📄 ffprobe.exe
+```
+
+Os arquivos baixados pelo aplicativo são direcionados automaticamente para a pasta padrão de Downloads do usuário do sistema operacional (`%USERPROFILE%\Downloads`).
