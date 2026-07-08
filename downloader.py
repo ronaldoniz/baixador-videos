@@ -115,11 +115,12 @@ class VideoDownloaderApp:
 
         ydl_opts = {
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-            'outtmpl': os.path.join(download_dir, '%(title)s.%(ext)s'),
+            'outtmpl': os.path.join(download_dir, '%(title).50s.%(ext)s'),
             'merge_output_format': 'mp4',
             'quiet': True,
             'no_warnings': True,
             'progress_hooks': [self.progress_hook],
+            'restrictfilenames': True,
         }
 
         try:
